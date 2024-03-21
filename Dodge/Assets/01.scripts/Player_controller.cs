@@ -6,9 +6,10 @@ public class Player_controller : MonoBehaviour
 {
     public Rigidbody player_rigidbody;
     public float speed = 8f;
+    int test;
     void Start()
     {
-    
+        Debug.Log("æ»≥Á«œººø‰");
     }
 
     void Update()
