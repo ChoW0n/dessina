@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_controller : MonoBehaviour
 {
     public Rigidbody player_rigidbody;          //이동에 사용할 리지드바디 컴포넌트
     public float speed = 8f;                    //이동속력
     int test;
-   
+
+    public Text point_text;        //점수를 표시할 텍스트 컴포넌트
+    public int Point = 0;
+
     private void Awake()
     {
         
@@ -45,4 +50,16 @@ public class Player_controller : MonoBehaviour
         // 가져온게 GameManager 오브젝트의 EndGame() 메서드 실행
         gameManager.EndGame();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == "Point")
+        {
+            Point += 1;
+            Destroy(other.gameObject);
+            point_text.text = "Score: " + Point.ToString(); 
+            GenPoint.PointSpawn = false;
+        }
+    }
+
 }

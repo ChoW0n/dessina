@@ -44,11 +44,20 @@ public class Bullet_spawner : MonoBehaviour
             GameObject bullet
                 = Instantiate(bullet_prefab, transform.position, transform.rotation);
             //생성된 bullet 게임 오브젝트의 정면 방향이 target을 향하도록 회전
-            bullet.transform.LookAt(target);
+            //bullet.transform.LookAt(target);
 
             //다음번 생성 간격을 spawn_rate_min, spawn_rate_max 사이에서 랜덤 지정
             spawn_rate = Random.Range(spawn_rate_min, spawn_rate_max);
         }
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+
+        Vector3 endPos = transform.position + transform.forward * 3f;
+
+        Gizmos.DrawLine(transform.position, endPos);
     }
 }

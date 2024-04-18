@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //UI 관련 라이브러리
-using UnityEngine.SceneManagement; //Scene 관련 라이브러리
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl; //Scene 관련 라이브러리
 
 public class GameManager : MonoBehaviour
 {
     public GameObject gameover_text; //게임 오버 시 활성화 할 텍스트 게임 오브젝트
     public Text time_text;          //생존 시간을 표시할 텍스트 컴포넌트
     public Text record_text;        //최고 기록을 표시할 텍스트 컴포넌트
+    
 
     private float survive_time; //생존 시간
     bool is_gameover;           //게임 오버 상태
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour
             survive_time += Time.deltaTime;
             //갱신한 생존 시간을 time_text 텍스트 컴포넌트를 이용해 표시
             time_text.text = "Time: " + (int) survive_time;
+
+
         }
         else
         {
